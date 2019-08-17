@@ -3,7 +3,9 @@ import './App.css';
 
 function App() {
 	return (
-		<div className="App">
+		<div className="grid container">
+			<div>stuff</div>
+			<div>stuff</div>
 		</div>
 	);
 }

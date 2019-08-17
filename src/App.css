@@ -1,3 +1,19 @@
 body {
-	background: red;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	font-weight: 400;
+	/* reset the base size font and work up from there */
+	font-size: 16px;
+}
+
+/* define a grid... in the real world use a framework Tachyons, bootstrap, foundation */
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1200px;
 }
