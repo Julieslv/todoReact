@@ -43,4 +43,40 @@ body {
 
 .list-header {
 	background: linear-gradient(to bottom, #5015e3 0%, #7e52e8 100%);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-end;
+	min-height: 200px;
+	padding: 25px;
+	position: relative;
+}
+
+.list-header::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: transparent url(images/canyon.png) no-repeat 50% 0;
+	background-size: cover;
+	opacity: 0.5;
+}
+
+.list-header>* {
+	position: relative;
+}
+
+.list-header h2 {
+	color: #ffffff;
+	font-size: 2.5rem;
+	font-weight: 300;
+	margin: 0.5em 0;
+}
+
+.list-header p {
+	color: #ffffff;
+	text-indent: 6px;
 }

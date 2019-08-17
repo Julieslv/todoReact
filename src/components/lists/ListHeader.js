@@ -1,16 +1,13 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 
-class ListHeader extends Component {
-	static propTypes = {
-		prop: PropTypes
-	}
-
-	render() {
-		return (
-			<Header className='list-header'>
-
-			</Header>
-		)
-	}
+const ListHeader = ({ listName, listDate }) => {
+	return (
+		<div className='list-header'>
+			<h2>{listName}</h2>
+			<p>{listDate}</p>
+		</div>
+	)
 }
+
+export default ListHeader
+

@@ -8,7 +8,7 @@ import WebFont from 'webfontloader';
 
 WebFont.load({
 	google: {
-		families: ['Roboto:400,500,700', 'serif']
+		families: ['Roboto:300,400,500,700', 'serif']
 	}
 });
 
