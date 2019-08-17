@@ -1,11 +1,11 @@
 import React from 'react'
 import profileImg from '../images/profile.jpg';
 
-const Profile = (props) => {
+const Profile = ({ userName }) => {
 	return (
 		<div className='profile'>
 			<img src={profileImg} alt='User profile' />
-			<div>{this.props.userName}</div>
+			<div>{userName}</div>
 		</div>
 	)
 }
