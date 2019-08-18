@@ -34,16 +34,18 @@ class List extends Component {
 				}
 			],
 			currentItem: {
-				text: '',
-				key: '',
+				id: '',
+				what: '',
+				complete: false,
+				listGroup: 'Team todo-list'
 			}
 		};
 	}
 
-	deleteItem = key => {
-		console.info(`deleteItem : ${key}`)
+	deleteItem = id => {
+		console.info(`deleteItem : ${id}`)
 		const filteredItems = this.state.items.filter(item => {
-			return item.key !== key
+			return item.id !== id
 		})
 		this.setState({
 			items: filteredItems,
@@ -51,10 +53,11 @@ class List extends Component {
 	}
 	handleInput = event => {
 		const itemText = event.target.value
-		const currentItem = { text: itemText, key: Date.now() }
+		const currentItem = { what: itemText, id: Date.now() }
 		this.setState({
 			currentItem
 		})
+		console.log(this.state);
 	}
 
 	addItem = event => {
@@ -62,9 +65,10 @@ class List extends Component {
 		const newItem = this.state.currentItem
 		if (newItem.text !== '') {
 			const items = [...this.state.items, newItem]
+			console.log(`items ${items}`)
 			this.setState({
 				items: items,
-				currentItem: { text: '', key: '' },
+				currentItem: { what: '', id: '' },
 			})
 		}
 	}
