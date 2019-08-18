@@ -43,7 +43,6 @@ class List extends Component {
 	}
 
 	deleteItem = id => {
-		console.info(`deleteItem : ${id}`)
 		const filteredItems = this.state.items.filter(item => {
 			return item.id !== id
 		})
@@ -68,7 +67,6 @@ class List extends Component {
 				items: items,
 				currentItem: { what: '', id: '' },
 			})
-			console.log(this.state.currentItem.what);
 		}
 	}
 

@@ -5,7 +5,7 @@ const ListItem = ({ what, id, deleteItem }) => {
 		<li className='checkbox'>
 			<input type='checkbox' id={`checkbox_${id}`} />
 			<label htmlFor={`checkbox_${id}`}>{what}</label>
-			<button className='btn-delete' onClick={deleteItem} >Delete item</button>
+			<button className='btn-delete' key={id} onClick={() => deleteItem(id)} >Delete item</button>
 		</li>
 	)
 }
