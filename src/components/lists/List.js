@@ -57,7 +57,6 @@ class List extends Component {
 		this.setState({
 			currentItem
 		})
-		console.log(this.state);
 	}
 
 	addItem = event => {
@@ -65,11 +64,11 @@ class List extends Component {
 		const newItem = this.state.currentItem
 		if (newItem.text !== '') {
 			const items = [...this.state.items, newItem]
-			console.log(`items ${items}`)
 			this.setState({
 				items: items,
 				currentItem: { what: '', id: '' },
 			})
+			console.log(this.state.currentItem.what);
 		}
 	}
 
@@ -91,7 +90,7 @@ class List extends Component {
 							className='input-item'
 							type='text'
 							placeholder='Add a todo'
-							defaultValue={this.state.currentItem.text}
+							value={this.state.currentItem.what}
 							onChange={this.handleInput} />
 					</form>
 				</div>
