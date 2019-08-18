@@ -10,7 +10,7 @@ class App extends Component {
 		userName: 'Julie Vaccalluzzo',
 		listName: 'Team todo-list',
 		listDate: 'Tues 12 December',
-		list: ['Shortlist feature for MVP', 'Launch PPC campaign with new creative', 'Define audience breakdown with new data']
+		listToDo: ['Shortlist feature for MVP', 'Launch PPC campaign with new creative', 'Define audience breakdown with new data', 'Launch demo page for SEO analysis']
 	}
 	render() {
 		return (
@@ -20,7 +20,7 @@ class App extends Component {
 					<ListGroup listName={this.state.listName} />
 				</div>
 				<div>
-					<List listName={this.state.listName} listDate={this.state.listDate} />
+					<List listName={this.state.listName} listDate={this.state.listDate} listToDo={this.state.listToDo} />
 				</div>
 			</div>
 		)

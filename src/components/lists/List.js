@@ -1,16 +1,19 @@
 import React from 'react'
 import ListHeader from './ListHeader';
+import ListCheck from './ListItem';
 
-const List = ({ listName, listDate }) => {
+// const List = (props) => {
+const List = ({ listName, listDate, listToDo }) => {
+	console.log(listToDo)
 	return (
 		<div className='list'>
 			<ListHeader listName={listName} listDate={listDate} />
 			<ul>
-				<li class='checkbox'>
-					<input type='checkbox' id='checkbox_1' />
-					<label for='checkbox_1'>Pure CSS Checkbox</label>
-					<button className='btn-delete'>Delete item</button>
-				</li>
+				{listToDo.map((listItem, index) => {
+					return (
+						< ListCheck listItem={listItem} key={index + 1} />
+					)
+				})}
 			</ul>
 		</div>
 	)
