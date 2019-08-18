@@ -1,11 +1,10 @@
 import React from 'react'
 
-const ListItem = (props) => {
-	console.log(props.index)
+const ListItem = ({ listItem, itemKey }) => {
 	return (
 		<li className='checkbox'>
-			<input type='checkbox' id='checkbox_1' />
-			<label htmlFor='checkbox_1'>{props.listItem}</label>
+			<input type='checkbox' id={`checkbox_${itemKey}`} />
+			<label htmlFor={`checkbox_${itemKey}`}>{listItem}</label>
 			<button className='btn-delete'>Delete item</button>
 		</li>
 	)

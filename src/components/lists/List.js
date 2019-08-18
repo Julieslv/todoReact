@@ -4,17 +4,22 @@ import ListCheck from './ListItem';
 
 // const List = (props) => {
 const List = ({ listName, listDate, listToDo }) => {
-	console.log(listToDo)
 	return (
 		<div className='list'>
 			<ListHeader listName={listName} listDate={listDate} />
-			<ul>
+			<ul className='checklist'>
 				{listToDo.map((listItem, index) => {
+					let itemKey = index + 1
 					return (
-						< ListCheck listItem={listItem} key={index + 1} />
+						/* using the key like this is not ideal */
+						< ListCheck listItem={listItem} key={itemKey} itemKey={itemKey} />
 					)
 				})}
 			</ul>
+			<div className='add-item'>
+				<button className='btn-add'>Add a todo</button>
+				<input className='input-item' type='text' placeholder='Add a todo' />
+			</div>
 		</div>
 	)
 }
