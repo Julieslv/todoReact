@@ -5,7 +5,13 @@ const List = ({ listName, listDate }) => {
 	return (
 		<div className='list'>
 			<ListHeader listName={listName} listDate={listDate} />
-			List of items
+			<ul>
+				<li class='checkbox'>
+					<input type='checkbox' id='checkbox_1' />
+					<label for='checkbox_1'>Pure CSS Checkbox</label>
+					<button className='btn-delete'>Delete item</button>
+				</li>
+			</ul>
 		</div>
 	)
 }
