@@ -1,11 +1,11 @@
 import React from 'react'
 
-const ListItem = ({ listItem, itemKey }) => {
+const ListItem = ({ what, id, deleteItem }) => {
 	return (
 		<li className='checkbox'>
-			<input type='checkbox' id={`checkbox_${itemKey}`} />
-			<label htmlFor={`checkbox_${itemKey}`}>{listItem}</label>
-			<button className='btn-delete'>Delete item</button>
+			<input type='checkbox' id={`checkbox_${id}`} />
+			<label htmlFor={`checkbox_${id}`}>{what}</label>
+			<button className='btn-delete' onClick={deleteItem} >Delete item</button>
 		</li>
 	)
 }

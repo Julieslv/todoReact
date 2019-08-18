@@ -1,27 +1,104 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ListHeader from './ListHeader';
-import ListCheck from './ListItem';
+import ListItem from './ListItem';
+import PropTypes from 'prop-types'
 
-// const List = (props) => {
-const List = ({ listName, listDate, listToDo }) => {
-	return (
-		<div className='list'>
-			<ListHeader listName={listName} listDate={listDate} />
-			<ul className='checklist'>
-				{listToDo.map((listItem, index) => {
-					let itemKey = index + 1
-					return (
-						/* using the key like this is not ideal */
-						< ListCheck listItem={listItem} key={itemKey} itemKey={itemKey} />
-					)
-				})}
-			</ul>
-			<div className='add-item'>
-				<button className='btn-add'>Add a todo</button>
-				<input className='input-item' type='text' placeholder='Add a todo' />
+class List extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			items: [
+				{
+					id: 1566146386080,
+					what: 'Shortlist feature for MVP',
+					complete: false,
+					listGroup: 'Team todo-list'
+				},
+				{
+					id: 1566156386080,
+					what: 'Launch demo page for SEO analysis',
+					complete: false,
+					listGroup: 'Team todo-list'
+				},
+				{
+					id: 1566166386080,
+					what: 'Define audience breakdown with new data',
+					complete: false,
+					listGroup: 'Team todo-list'
+				},
+				{
+					id: 1566176386080,
+					what: 'Launch PPC campaign with new creative',
+					complete: false,
+					listGroup: 'Team todo-list'
+				}
+			],
+			currentItem: {
+				text: '',
+				key: '',
+			}
+		};
+	}
+
+	deleteItem = key => {
+		console.info(`deleteItem : ${key}`)
+		const filteredItems = this.state.items.filter(item => {
+			return item.key !== key
+		})
+		this.setState({
+			items: filteredItems,
+		})
+	}
+	handleInput = event => {
+		const itemText = event.target.value
+		const currentItem = { text: itemText, key: Date.now() }
+		this.setState({
+			currentItem
+		})
+	}
+
+	addItem = event => {
+		event.preventDefault()
+		const newItem = this.state.currentItem
+		if (newItem.text !== '') {
+			const items = [...this.state.items, newItem]
+			this.setState({
+				items: items,
+				currentItem: { text: '', key: '' },
+			})
+		}
+	}
+
+	render() {
+		return (
+			<div className='list'>
+				<ListHeader listName={this.props.listName} listDate={this.props.listDate} />
+				<ul className='checklist'>
+					{this.state.items.map(item => {
+						return (
+							< ListItem what={item.what} key={item.id} id={item.id} deleteItem={this.deleteItem} />
+						)
+					})}
+				</ul>
+				<div className='add-item'>
+					<form onSubmit={this.addItem}>
+						<button className='btn-add'>Add a todo</button>
+						<input
+							className='input-item'
+							type='text'
+							placeholder='Add a todo'
+							defaultValue={this.state.currentItem.text}
+							onChange={this.handleInput} />
+					</form>
+				</div>
 			</div>
-		</div>
-	)
+		)
+	}
+}
+
+List.propTypes = {
+	items: PropTypes.array,
+	currentItem: PropTypes.string
 }
 
 export default List
