@@ -4,13 +4,13 @@ import './App.css';
 import ListGroup from './components/lists/ListGroup'
 import Profile from './components/Profile'
 import List from './components/lists/List';
+import PropTypes from 'prop-types';
 
 class App extends Component {
 	state = {
 		userName: 'Julie Vaccalluzzo',
 		listName: 'Team todo-list',
-		listDate: 'Tues 12 December',
-		listToDo: ['Shortlist feature for MVP', 'Launch PPC campaign with new creative', 'Define audience breakdown with new data', 'Launch demo page for SEO analysis']
+		listDate: 'Tues 12 December'
 	}
 	render() {
 		return (
@@ -26,5 +26,12 @@ class App extends Component {
 		)
 	}
 }
+
+List.propTypes = {
+	userName: PropTypes.string.isRequired,
+	listName: PropTypes.string.isRequired, //this should come from the array of list items
+	listDate: PropTypes.string.isRequired,
+}
+
 
 export default App;

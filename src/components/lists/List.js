@@ -61,7 +61,7 @@ class List extends Component {
 	addItem = event => {
 		event.preventDefault()
 		const newItem = this.state.currentItem
-		if (newItem.text !== '') {
+		if (newItem.what !== '') {
 			const items = [...this.state.items, newItem]
 			this.setState({
 				items: items,
@@ -77,7 +77,7 @@ class List extends Component {
 				<ul className='checklist'>
 					{this.state.items.map(item => {
 						return (
-							< ListItem what={item.what} key={item.id} id={item.id} deleteItem={this.deleteItem} />
+							< ListItem what={item.what} key={item.id} id={item.id} deleteItem={this.deleteItem} isComplete={item.complete} />
 						)
 					})}
 				</ul>
@@ -99,7 +99,7 @@ class List extends Component {
 
 List.propTypes = {
 	items: PropTypes.array,
-	currentItem: PropTypes.string
+	currentItem: PropTypes.object
 }
 
 export default List
