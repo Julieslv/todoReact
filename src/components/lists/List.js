@@ -11,7 +11,7 @@ class List extends Component {
 				{
 					id: 1566146386080,
 					what: 'Shortlist feature for MVP',
-					complete: false,
+					complete: true,
 					listGroup: 'Team todo-list'
 				},
 				{
@@ -42,6 +42,20 @@ class List extends Component {
 		};
 	}
 
+	handleCheck = (id) => {
+		const items = this.state.items.map(item => {
+			if (id == item.id) {
+				item.complete = item.complete === true ? false : true
+				return item
+			}
+			return item
+		})
+
+		this.setState({
+			items
+		})
+	}
+
 	deleteItem = id => {
 		const filteredItems = this.state.items.filter(item => {
 			return item.id !== id
@@ -52,7 +66,7 @@ class List extends Component {
 	}
 	handleInput = event => {
 		const itemText = event.target.value
-		const currentItem = { what: itemText, id: Date.now() }
+		const currentItem = { id: Date.now(), what: itemText, complete: false, listGroup: "Team todo-list" }
 		this.setState({
 			currentItem
 		})
@@ -65,19 +79,20 @@ class List extends Component {
 			const items = [...this.state.items, newItem]
 			this.setState({
 				items: items,
-				currentItem: { what: '', id: '' },
+				currentItem: { id: '', what: '', complete: false, listGroup: "Team todo-list" },
 			})
 		}
 	}
 
 	render() {
+		console.log(this.state.items)
 		return (
 			<div className='list'>
 				<ListHeader listName={this.props.listName} listDate={this.props.listDate} />
 				<ul className='checklist'>
 					{this.state.items.map(item => {
 						return (
-							< ListItem what={item.what} key={item.id} id={item.id} deleteItem={this.deleteItem} isComplete={item.complete} />
+							< ListItem what={item.what} key={item.id} id={item.id} deleteItem={this.deleteItem} handleCheck={this.handleCheck} complete={item.complete} />
 						)
 					})}
 				</ul>

@@ -28,7 +28,7 @@ class App extends Component {
 }
 
 List.propTypes = {
-	userName: PropTypes.string.isRequired,
+	userName: PropTypes.string,
 	listName: PropTypes.string.isRequired, //this should come from the array of list items
 	listDate: PropTypes.string.isRequired,
 }
